@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<title></title>
+		<link href="../d3.linechart.css" rel="stylesheet" />
+		<style>
+.target {stroke:red;}
+		</style>
+	</head>
+	<body>
+		<div id="graph"></div>
+		<script src="https://raw.github.com/mbostock/d3/master/d3.min.js"></script>
+		<script src="../d3.linechart.js"></script>
+		<script>
+var data = [
+	{
+		"name": "values",
+		"data": [
+			{"date": "1/1/2013", "revenue": 110},
+			{"date": "2/1/2013", "revenue": 90},
+			{"date": "3/1/2013", "revenue": 100},
+			{"date": "4/1/2013", "revenue": 120},
+			{"date": "5/1/2013", "revenue": 95},
+			{"date": "6/1/2013", "revenue": 100}
+		]
+	}, {
+		"name": "target",
+		"data": [
+			{"date": "1/1/2013", "revenue": 100},
+			{"date": "3/1/2013", "revenue": 110},
+			{"date": "6/1/2013", "revenue": 120}
+		]
+	}
+]		
+
+var parseDate = d3.time.format("%m/%d/%Y").parse
+
+var chart = new LineChart("#graph", {
+	margin: {right: 30},
+	idAccessor: function(d) {return d.name},
+	dataAccessor: function(d) {return d.data},
+	xAccessor: function(d) {return parseDate(d.date)},
+	yAccessor: function(d) {return d.revenue}
+})
+chart.update(data)
+		</script>
+	</body>
+</html>
