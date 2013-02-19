@@ -2,7 +2,7 @@
 
 A basic multiline chart
 
-`LineChart(root, data, options)`
+`LineChart(root, options)`
 
 - `root` :: string - selector for the container that will host the chart, e.g. `"#linechart-container"`
 - `options` :: object
